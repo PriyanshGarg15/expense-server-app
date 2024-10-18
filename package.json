@@ -7,8 +7,8 @@
     "node": "v20.12.1"
   },
   "scripts": {
-    "start": "node src/server.js",
-    "watch": "nodemon src/server.js"
+    "start": "node ./src/server.js",
+    "watch": "nodemon ./src/server.js"
   },
   "keywords": [
     "MERN"
