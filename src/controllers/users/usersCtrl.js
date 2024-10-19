@@ -1,3 +1,4 @@
+const generateToken = require("../../middlewares/generateToken");
 const User = require("../../model/User");
 const expressAsyncHandler = require("express-async-handler");
 
@@ -31,4 +32,32 @@ const fetchUsersCtr=expressAsyncHandler(async (req,res)=>{
 });
 
 
-module.exports={registerUser,fetchUsersCtr};
+//login user
+const loginUserCrtrl=expressAsyncHandler(
+    async(req,res)=>{
+            const {email,password} =req.body;
+            // res.json("Login");
+            //find user in db
+            const userFound=await User.findOne({email});
+            //check if the user password watched or not
+            if(userFound && (await userFound.isPasswordMatch(password)))
+            {
+                res.json({
+                    _id:userFound._id,
+                    firstname:userFound.firstname,
+                    lastname:userFound.lastname,
+                    email:userFound.email,
+                    isAdmin:userFound.isAdmin,
+                    token:generateToken(userFound._id)
+                });
+            }else
+            {
+                
+                res.status(401);
+                throw new Error("inavlid login credentials");
+            }
+            
+    
+})
+
+module.exports={registerUser,fetchUsersCtr,loginUserCrtrl};
