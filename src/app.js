@@ -15,6 +15,13 @@ dbConnect();
 //middlewares
 app.use(express.json())
 
+
+
+app.get('/',(req,res)=>{
+    res.json("welcome to my site")
+})
+
+
 //routes
 app.use('/api/users',userRoute);
 
