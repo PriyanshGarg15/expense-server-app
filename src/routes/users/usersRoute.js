@@ -4,6 +4,7 @@ const userRoute=express.Router();
 
 
 userRoute.post('/register',registerUser);
+
 userRoute.get('/',fetchUsersCtr);
 
 module.exports=userRoute;
