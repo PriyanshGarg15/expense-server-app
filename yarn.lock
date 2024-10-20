@@ -569,6 +569,11 @@ mongodb@6.9.0:
     bson "^6.7.0"
     mongodb-connection-string-url "^3.0.0"
 
+mongoose-paginate-v2@^1.8.5:
+  version "1.8.5"
+  resolved "https://registry.npmjs.org/mongoose-paginate-v2/-/mongoose-paginate-v2-1.8.5.tgz"
+  integrity sha512-kFxhot+yw9KmpAGSSrF/o+f00aC2uawgNUbhyaM0USS9L7dln1NA77/pLg4lgOaRgXMtfgCENamjqZwIM1Zrig==
+
 mongoose@^8.7.2:
   version "8.7.2"
   resolved "https://registry.npmjs.org/mongoose/-/mongoose-8.7.2.tgz"
@@ -766,7 +771,9 @@ serve-static@1.16.2:
     dotenv "^16.4.5"
     express "^4.21.1"
     express-async-handler "^1.2.0"
+    jsonwebtoken "^9.0.2"
     mongoose "^8.7.2"
+    mongoose-paginate-v2 "^1.8.5"
     server "file:"
 
 set-function-length@^1.2.1:
