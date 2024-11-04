@@ -1,13 +1,13 @@
 const express = require("express");
-const { createIncCtrl,fetchAllIncCtrl,fetchSingleIncCtrl,updateIncCtrl,deleteIncCtrl} = require("../../controllers/income/incomeCtrl");
-const incomeRoute=express.Router()
+const { createIncCtrl, fetchAllIncCtrl, fetchSingleIncCtrl, updateIncCtrl, deleteIncCtrl } = require("../../controllers/income/incomeCtrl");
+const incomeRoute = express.Router();
+const authMiddleware = require("../../middlewares/authMiddleware");
 
+// Applying authMiddleware to protect these routes
+incomeRoute.post("/", authMiddleware, createIncCtrl);
+incomeRoute.get("/", authMiddleware, fetchAllIncCtrl);
+incomeRoute.get("/:id", authMiddleware, fetchSingleIncCtrl);
+incomeRoute.put("/:id", authMiddleware, updateIncCtrl);
+incomeRoute.delete("/:id", authMiddleware, deleteIncCtrl);
 
-
-incomeRoute.post("/",createIncCtrl)
-incomeRoute.get("/",fetchAllIncCtrl)
-incomeRoute.get("/:id",fetchSingleIncCtrl)
-incomeRoute.put("/:id",updateIncCtrl)
-incomeRoute.delete("/:id",deleteIncCtrl)
-
-module.exports=incomeRoute;
+module.exports = incomeRoute;
