@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const moongosePaginate = require("mongoose-paginate-v2");
 
+
 // Define income schema
 const incomeSchema = new mongoose.Schema(
   {
@@ -30,6 +31,12 @@ const incomeSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    toJSON:{
+      virtual:true,
+    },
+    toObject:{
+      virtuals:true
+    }
   }
 );
 

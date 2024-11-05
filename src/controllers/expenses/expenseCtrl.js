@@ -1,5 +1,6 @@
 const expressAsyncHandler = require("express-async-handler");
 const Expense = require("../../model/Expense");
+const { populate } = require("../../model/Income");
 
 
 //create
@@ -25,7 +26,7 @@ const createExpCtrl=expressAsyncHandler(async (req,res) => {
 const fetchAllExpCtrl=expressAsyncHandler(async (req,res) => {
     const {page}=req.query.page;
     try {
-        const expense=await Expense.paginate({},{limit:10,page:Number(page)});
+        const expense=await Expense.paginate({},{limit:10,page:Number(page),populate:'user'});
         res.json(expense);
     } catch (error) {
         res.json(error);
